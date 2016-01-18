@@ -19,18 +19,27 @@ public class sample {
                 { 0, 0, 0, 0, 9, 0, 2, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 2, 0, 0, 0 },
                 { 0, 0, 0, 2, 2, 2, 2, 0, 0, 0 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 2, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 2, 0, 0, 0, 0, 0, 0 },
         };
 
+        int targetX = 0;
+        int targetY = 0;
+        int i, j;
 
+        //Look for the target node coordinates
+        for(i=0; i<multi.length; i++) {
+            for(j=0; j<multi[i].length; j++) {
+                if(multi[i][j] == 9) {
+                    targetX = j;
+                    targetY = i;
+                }
+            }
+        }
 
         ANode[][] nodes = new ANode[multi.length][multi[0].length];
 
         //Map integers into Nodes
-        int i, j;
-        int targetX = 4;
-        int targetY = 5;
         ANode startNode = null, targetNode = null;
         for(i=0; i<multi.length; i++) {
             for(j=0; j<multi[i].length; j++) {
@@ -70,9 +79,15 @@ public class sample {
         List<ANode> path = astar.findPath();
         long finish = System.currentTimeMillis();
 
-        for(ANode n : path) {
-            System.out.println(n);
+        if(path != null) {
+            for(ANode n : path) {
+                System.out.println(n);
+            }
         }
+        else {
+            System.out.println("There is no path to the target node");
+        }
+
 
         System.out.println("Time (ms): " + (finish - start));
     }
