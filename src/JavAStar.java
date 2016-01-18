@@ -32,7 +32,7 @@ public class JavAStar {
                 if(!this.isInList(n)) {
                     this.openList.add(n);
                     n.setParent(lower);
-                    n.setCurrentCost(lower.getCurrentCost() + lower.getCost());
+                    n.setCurrentCost(lower.getCurrentCost() + n.getCost());
                 }
             }
 
