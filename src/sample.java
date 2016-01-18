@@ -24,7 +24,7 @@ public class sample {
         //Find and print the path
         long start = System.currentTimeMillis();
         JavAStar astar = new JavAStar(multi);
-        List<ANode> path = astar.findPath(1, 1, 5, 3);
+        List<ANode> path = astar.findPath(1, 1, 5, 3, true);
         long finish = System.currentTimeMillis();
 
         if(path != null) {

@@ -31,7 +31,7 @@ public class JavAStar {
         }
     }
 
-    public List<ANode> findPath(int sx, int sy, int tx, int ty) {
+    public List<ANode> findPath(int sx, int sy, int tx, int ty, boolean allowDiagonal) {
         this.startingNode = this.nodeGrid[sy][sx];
         this.targetNode = this.nodeGrid[tx][ty];
 
@@ -51,6 +51,17 @@ public class JavAStar {
                         this.nodeGrid[i][j].addConnectedNode(this.nodeGrid[i-1][j]);
                     if(i+1 < this.nodeGrid.length && this.nodeGrid[i+1][j] != null)
                         this.nodeGrid[i][j].addConnectedNode(this.nodeGrid[i+1][j]);
+
+                    if(allowDiagonal) {
+                        if(j-1 >= 0 && i-1 >= 0 && this.nodeGrid[i-1][j-1] != null)
+                            this.nodeGrid[i][j].addConnectedNode(this.nodeGrid[i-1][j-1]);
+                        if(j-1 >= 0 && i+1 < this.nodeGrid.length && this.nodeGrid[i+1][j-1] != null)
+                            this.nodeGrid[i][j].addConnectedNode(this.nodeGrid[i+1][j-1]);
+                        if(j+1 < this.nodeGrid[i].length && i-1 >=0 && this.nodeGrid[i-1][j+1] != null)
+                            this.nodeGrid[i][j].addConnectedNode(this.nodeGrid[i-1][j+1]);
+                        if(j+1 < this.nodeGrid[i].length && i+1 < this.nodeGrid.length && this.nodeGrid[i+1][j+1] != null)
+                            this.nodeGrid[i][j].addConnectedNode(this.nodeGrid[i+1][j+1]);
+                    }
                 }
             }
         }
