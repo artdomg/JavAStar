@@ -29,10 +29,19 @@ public class JavAStar {
         else {
             List<ANode> connectedNodes = lower.getConnectedNodes();
             for(ANode n : connectedNodes) {
-                if(!this.isInList(n)) {
+                int inList = this.isInList(n);
+
+                if(inList == 0) {
                     this.openList.add(n);
                     n.setParent(lower);
                     n.setCurrentCost(lower.getCurrentCost() + n.getCost());
+                }
+                if(inList == 1) {
+                    int costFromHere = lower.getCurrentCost() + n.getCost();
+                    if(costFromHere < n.getCurrentCost()) {
+                        n.setParent(lower);
+                        n.setCurrentCost(costFromHere);
+                    }
                 }
             }
 
@@ -43,8 +52,13 @@ public class JavAStar {
         }
     }
 
-    private boolean isInList(ANode node) {
-        return openList.contains(node) || closedList.contains(node);
+    private int isInList(ANode node) {
+        if(openList.contains(node))
+            return 1;
+        if(closedList.contains(node))
+            return 2;
+
+        return 0;
     }
 
     private List<ANode> createPath() {
