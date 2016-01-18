@@ -46,7 +46,7 @@ public class sample {
                 if(multi[i][j] == 0 || multi[i][j] == 8 || multi[i][j] == 9) {
                     //Get distance between current node and target node
                     int h = (int)(Math.pow(i - targetY, 2) + Math.pow(j - targetX, 2));
-                    nodes[i][j] = new ANode(null, h, 1);
+                    nodes[i][j] = new ANode(h, 1);
                     nodes[i][j].setValue("[" + j + ", " + i + "]");
                 }
 

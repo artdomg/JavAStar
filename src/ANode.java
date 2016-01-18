@@ -20,6 +20,13 @@ public class ANode {
         this.totalCost = this.heur;
     }
 
+    public ANode(int heur, int cost) {
+        this.connectedNodes = new LinkedList<>();
+        this.heur = heur;
+        this.cost = cost;
+        this.totalCost = this.heur;
+    }
+
     public void setValue(Object value) {
         this.value = value;
     }
