@@ -27,16 +27,16 @@ public class ANode {
         this.totalCost = this.heur;
     }
 
+    public void setHeur(int heur) {
+        this.heur = heur;
+    }
+
     public void setValue(Object value) {
         this.value = value;
     }
 
     public void addConnectedNode(ANode node) {
         this.connectedNodes.add(node);
-    }
-
-    public void setConnectedNodes(List<ANode> connectedNodes) {
-        this.connectedNodes = connectedNodes;
     }
 
     public void setCurrentCost(int currentCost) {
