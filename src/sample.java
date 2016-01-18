@@ -29,11 +29,14 @@ public class sample {
 
         //Map integers into Nodes
         int i, j;
+        int targetX = 4;
+        int targetY = 5;
         ANode startNode = null, targetNode = null;
         for(i=0; i<multi.length; i++) {
             for(j=0; j<multi[i].length; j++) {
                 if(multi[i][j] == 0 || multi[i][j] == 8 || multi[i][j] == 9) {
-                    int h = (int)(Math.pow(i - 2, 2) + Math.pow(j - 2, 2));
+                    //Get distance between current node and target node
+                    int h = (int)(Math.pow(i - targetY, 2) + Math.pow(j - targetX, 2));
                     nodes[i][j] = new ANode(null, h, 1);
                     nodes[i][j].setValue("[" + j + ", " + i + "]");
                 }
